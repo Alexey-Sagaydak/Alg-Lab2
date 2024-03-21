@@ -62,37 +62,37 @@ public:
         cities[source].removeRoad(destination);
     }
 
-    // Рекурсивная функция для поиска путей
+    // Р РµРєСѓСЂСЃРёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ РїРѕРёСЃРєР° РїСѓС‚РµР№
     void findPathsUtil(std::string current, std::string destination, int totalDistance, std::vector<std::string>& path) {
-        if (current == destination) { // Если достигнут конечный город
-            std::cout << "Путь: ";
+        if (current == destination) { // Р•СЃР»Рё РґРѕСЃС‚РёРіРЅСѓС‚ РєРѕРЅРµС‡РЅС‹Р№ РіРѕСЂРѕРґ
+            std::cout << "РџСѓС‚СЊ: ";
             for (int i = 0; i < path.size() - 1; ++i) {
                 std::cout << path[i] << " -> ";
             }
             std::cout << path[path.size() - 1] << std::endl;
-            std::cout << "Общая длина: " << totalDistance << " км" << std::endl;
+            std::cout << "РћР±С‰Р°СЏ РґР»РёРЅР°: " << totalDistance << " РєРј" << std::endl;
             std::cout << std::endl;
             return;
         }
 
-        // Перебираем все дороги из текущего города
+        // РџРµСЂРµР±РёСЂР°РµРј РІСЃРµ РґРѕСЂРѕРіРё РёР· С‚РµРєСѓС‰РµРіРѕ РіРѕСЂРѕРґР°
         for (const auto& road : cities[current].getRoads()) {
-            if (std::find(path.begin(), path.end(), road.destination) == path.end()) { // Проверяем, что город не посещен
+            if (std::find(path.begin(), path.end(), road.destination) == path.end()) { // РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ РіРѕСЂРѕРґ РЅРµ РїРѕСЃРµС‰РµРЅ
                 std::vector<std::string> newPath = path;
                 newPath.push_back(road.destination);
-                findPathsUtil(road.destination, destination, totalDistance + road.distance, newPath); // Рекурсивный вызов для следующего города
+                findPathsUtil(road.destination, destination, totalDistance + road.distance, newPath); // Р РµРєСѓСЂСЃРёРІРЅС‹Р№ РІС‹Р·РѕРІ РґР»СЏ СЃР»РµРґСѓСЋС‰РµРіРѕ РіРѕСЂРѕРґР°
             }
         }
     }
 
-    // Вывод путей из одного города в другой с указанием общей протяженности
+    // Р’С‹РІРѕРґ РїСѓС‚РµР№ РёР· РѕРґРЅРѕРіРѕ РіРѕСЂРѕРґР° РІ РґСЂСѓРіРѕР№ СЃ СѓРєР°Р·Р°РЅРёРµРј РѕР±С‰РµР№ РїСЂРѕС‚СЏР¶РµРЅРЅРѕСЃС‚Рё
     void findPaths(std::string source, std::string destination) {
         if (cities.find(source) != cities.end() && cities.find(destination) != cities.end()) {
             std::vector<std::string> path = { source };
             findPathsUtil(source, destination, 0, path);
         }
         else {
-            std::cout << "Один из указанных городов не найден в сети." << std::endl;
+            std::cout << "РћРґРёРЅ РёР· СѓРєР°Р·Р°РЅРЅС‹С… РіРѕСЂРѕРґРѕРІ РЅРµ РЅР°Р№РґРµРЅ РІ СЃРµС‚Рё." << std::endl;
         }
     }
 };
@@ -101,30 +101,30 @@ int main() {
     setlocale(LC_ALL, "Rus");
     CityNetwork network;
 
-    network.addCity("Новосибирск");
-    network.addCity("Омск");
-    network.addCity("Красноярск");
-    network.addCity("Томск");
-    network.addCity("Караганда");
+    network.addCity("РќРѕРІРѕСЃРёР±РёСЂСЃРє");
+    network.addCity("РћРјСЃРє");
+    network.addCity("РљСЂР°СЃРЅРѕСЏСЂСЃРє");
+    network.addCity("РўРѕРјСЃРє");
+    network.addCity("РљР°СЂР°РіР°РЅРґР°");
 
 
-    network.addRoad("Новосибирск", "Омск", 300);
-    network.addRoad("Новосибирск", "Красноярск", 600);
-    network.addRoad("Красноярск", "Новосибирск", 600);
-    network.addRoad("Омск", "Красноярск", 700);
-    network.addRoad("Новосибирск", "Томск", 400);
-    network.addRoad("Томск", "Красноярск", 500);
-    network.addRoad("Омск", "Томск", 100);
-    network.addRoad("Омск", "Караганда", 100);
+    network.addRoad("РќРѕРІРѕСЃРёР±РёСЂСЃРє", "РћРјСЃРє", 300);
+    network.addRoad("РќРѕРІРѕСЃРёР±РёСЂСЃРє", "РљСЂР°СЃРЅРѕСЏСЂСЃРє", 600);
+    network.addRoad("РљСЂР°СЃРЅРѕСЏСЂСЃРє", "РќРѕРІРѕСЃРёР±РёСЂСЃРє", 600);
+    network.addRoad("РћРјСЃРє", "РљСЂР°СЃРЅРѕСЏСЂСЃРє", 700);
+    network.addRoad("РќРѕРІРѕСЃРёР±РёСЂСЃРє", "РўРѕРјСЃРє", 400);
+    network.addRoad("РўРѕРјСЃРє", "РљСЂР°СЃРЅРѕСЏСЂСЃРє", 500);
+    network.addRoad("РћРјСЃРє", "РўРѕРјСЃРє", 100);
+    network.addRoad("РћРјСЃРє", "РљР°СЂР°РіР°РЅРґР°", 100);
 
-    std::cout << "Пути из Новосибирска в Красноярск:" << std::endl;
-    network.findPaths("Новосибирск", "Красноярск");
+    std::cout << "РџСѓС‚Рё РёР· РќРѕРІРѕСЃРёР±РёСЂСЃРєР° РІ РљСЂР°СЃРЅРѕСЏСЂСЃРє:" << std::endl;
+    network.findPaths("РќРѕРІРѕСЃРёР±РёСЂСЃРє", "РљСЂР°СЃРЅРѕСЏСЂСЃРє");
 
-    network.removeRoad("Новосибирск", "Красноярск");
-    network.removeCity("Томск");
+    network.removeRoad("РќРѕРІРѕСЃРёР±РёСЂСЃРє", "РљСЂР°СЃРЅРѕСЏСЂСЃРє");
+    network.removeCity("РўРѕРјСЃРє");
 
-    std::cout << "Пути из Новосибирска в Красноярск:" << std::endl;
-    network.findPaths("Новосибирск", "Красноярск");
+    std::cout << "РџСѓС‚Рё РёР· РќРѕРІРѕСЃРёР±РёСЂСЃРєР° РІ РљСЂР°СЃРЅРѕСЏСЂСЃРє:" << std::endl;
+    network.findPaths("РќРѕРІРѕСЃРёР±РёСЂСЃРє", "РљСЂР°СЃРЅРѕСЏСЂСЃРє");
 
     return 0;
 }
