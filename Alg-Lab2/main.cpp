@@ -30,6 +30,15 @@ public:
     std::vector<Road> getRoads() const {
         return roads;
     }
+
+    void removeRoad(std::string destination) {
+        for (auto it = roads.begin(); it != roads.end(); ++it) {
+            if (it->destination == destination) {
+                roads.erase(it);
+                break;
+            }
+        }
+    }
 };
 
 class CityNetwork {
@@ -43,6 +52,14 @@ public:
 
     void addRoad(std::string source, std::string destination, int distance) {
         cities[source].addRoad(destination, distance);
+    }
+
+    void removeCity(std::string cityName) {
+        cities.erase(cityName);
+    }
+
+    void removeRoad(std::string source, std::string destination) {
+        cities[source].removeRoad(destination);
     }
 
     // Рекурсивная функция для поиска путей
@@ -60,7 +77,7 @@ public:
 
         // Перебираем все дороги из текущего города
         for (const auto& road : cities[current].getRoads()) {
-            if (find(path.begin(), path.end(), road.destination) == path.end()) { // Проверяем, что город не посещен
+            if (std::find(path.begin(), path.end(), road.destination) == path.end()) { // Проверяем, что город не посещен
                 std::vector<std::string> newPath = path;
                 newPath.push_back(road.destination);
                 findPathsUtil(road.destination, destination, totalDistance + road.distance, newPath); // Рекурсивный вызов для следующего города
@@ -99,6 +116,12 @@ int main() {
     network.addRoad("Томск", "Красноярск", 500);
     network.addRoad("Омск", "Томск", 100);
     network.addRoad("Омск", "Караганда", 100);
+
+    std::cout << "Пути из Новосибирска в Красноярск:" << std::endl;
+    network.findPaths("Новосибирск", "Красноярск");
+
+    network.removeRoad("Новосибирск", "Красноярск");
+    network.removeCity("Томск");
 
     std::cout << "Пути из Новосибирска в Красноярск:" << std::endl;
     network.findPaths("Новосибирск", "Красноярск");
