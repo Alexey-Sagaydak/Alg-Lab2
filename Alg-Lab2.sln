@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34714.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Alg-Lab2", "Alg-Lab2\Alg-Lab2.vcxproj", "{24C9CDFC-65BA-4E79-A50D-ED6B1D2DD237}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24C9CDFC-65BA-4E79-A50D-ED6B1D2DD237}.Debug|x64.ActiveCfg = Debug|x64
+		{24C9CDFC-65BA-4E79-A50D-ED6B1D2DD237}.Debug|x64.Build.0 = Debug|x64
+		{24C9CDFC-65BA-4E79-A50D-ED6B1D2DD237}.Debug|x86.ActiveCfg = Debug|Win32
+		{24C9CDFC-65BA-4E79-A50D-ED6B1D2DD237}.Debug|x86.Build.0 = Debug|Win32
+		{24C9CDFC-65BA-4E79-A50D-ED6B1D2DD237}.Release|x64.ActiveCfg = Release|x64
+		{24C9CDFC-65BA-4E79-A50D-ED6B1D2DD237}.Release|x64.Build.0 = Release|x64
+		{24C9CDFC-65BA-4E79-A50D-ED6B1D2DD237}.Release|x86.ActiveCfg = Release|Win32
+		{24C9CDFC-65BA-4E79-A50D-ED6B1D2DD237}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7A639590-1D0C-41BC-9D56-DBA2A0ABA28D}
+	EndGlobalSection
+EndGlobal
